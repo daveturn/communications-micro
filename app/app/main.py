@@ -25,21 +25,8 @@ async def root(
         read_only_prod_session: Session = Depends(get_read_only_prod_session)
         
         ):
-    from app.app.freshdesk.tasks import UpdateFreshdeskDataTask
-    from app.app.freshdesk.client import FreshdeskClient
-    freshdesk = FreshdeskClient(
-        api_key=settings.FRESHDESK_API_KEY,
-        domain=settings.FRESHDESK_DOMAIN_NAME,
-        version=settings.FRESHDESK_API_VERSION
-    )
-    task = UpdateFreshdeskDataTask(
-        freshdesk=freshdesk,
-        datawarehouse_session=datawarehouse_session,
-        read_only_prod_session=read_only_prod_session
-    )
+    '''
+        Example of how to add database dependencies to an endpoint
+    '''
 
-    try:
-        await task.run()
-        return {"success": True}
-    except Exception as e:
-        return {"success": False, 'Error': e}
+    pass
