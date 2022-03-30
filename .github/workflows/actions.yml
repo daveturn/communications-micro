@@ -1,9 +1,9 @@
 name: Python package
 
 on: [push]
-
-env:
 # Add test environment variables here
+env:
+  IS_TEST: true
 
 jobs:
   build:
