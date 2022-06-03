@@ -1,8 +1,8 @@
 from fastapi import FastAPI  # Depends
 
 # from sqlmodel import Session
-# from app.app.db.init_db import get_session, DatabaseName
-# from app.app.core.config import settings
+# from app.db.init_db import get_session, DatabaseName
+# from app.core.config import settings
 
 
 app = FastAPI()

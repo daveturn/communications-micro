@@ -10,8 +10,18 @@
       "type": "python",
       "request": "launch",
       "module": "uvicorn",
-      "args": ["app.app.main:app", "--reload"],
+      "args": ["app.main:app", "--reload"],
       "jinja": true,
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Shell",
+      "type": "python",
+      "pythonArgs": ["-i"],
+      "request": "launch",
+      "program": "${workspaceFolder}/manage.py",
+      "env": {},
+      "console": "integratedTerminal",
       "envFile": "${workspaceFolder}/.env"
     }
   ]

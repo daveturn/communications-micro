@@ -1,19 +1,23 @@
-from importlib import metadata
-from typing import Optional, Union
+from typing import Union
 import pydantic
-from sqlmodel import SQLModel, Field, Session
+from sqlmodel import SQLModel, Session
 from .constants import SCHEMA_NAME
 
+
 class BaseSQLModel(SQLModel):
-    '''
-        Base class containing method which will be useful for all Models.
+    """
+    Base class containing method which will be useful for all Models.
 
-        If a model will represent a table in the database, it must be declared with an additional parameter `table=True` eg:
+    If a model will represent a table in the database, it must be declared with
+    an additional parameter `table=True` eg:
 
-        class PartnerWorkerModelReadOnly(BaseSQLModel, table=True):
-    '''
+    class PartnerWorkerModelReadOnly(BaseSQLModel, table=True):
+    """
 
-    __table_args__ = {'schema': SCHEMA_NAME}  # remove this if you would like to reference the default 'public' schema for your models.
+    __table_args__ = {
+        "schema": SCHEMA_NAME
+    }  # remove this if you would like to reference the default 'public' schema
+    # for your models.
 
     async def save(self, db: Session):
         db.add(self)
@@ -24,10 +28,12 @@ class BaseSQLModel(SQLModel):
         db.delete(self)
         db.commit()
 
-    def model_is_equal_to(self, model: Union[SQLModel,pydantic.BaseModel] = None) -> bool:
-        '''
-            See if a model needs to be updated by comparing it to a newer version
-        '''
+    def model_is_equal_to(
+        self, model: Union[SQLModel, pydantic.BaseModel]
+    ) -> bool:
+        """
+        See if a model needs to be updated by comparing it to a newer version
+        """
         if not model:
             return False
         this_dict = self.dict()
@@ -52,6 +58,3 @@ class BaseSQLModel(SQLModel):
             attr = getattr(compare_dict, k)
             if v != attr:
                 setattr(self, k, attr)
-
-
-    

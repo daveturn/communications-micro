@@ -10,7 +10,7 @@ The exported `get_session` function in `init_db.py` takes one argument, the name
 
 ```python
 
-from app.app.db.init_db import  get_session, DatabaseName
+from app.db.init_db import  get_session, DatabaseName
 
 database_session = get_session(DatabaseName.DATABASE)
 
