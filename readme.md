@@ -6,7 +6,7 @@ Your .env file will need to be in the root folder and this will automatically po
 
 ## Database
 
-You must make sure that your test and production databases contain a schema called 'freshdesk'.
+All database setup files are stored in the /db folder. Here you will find a more detailed readme.
 
 ## Github Actions
 
