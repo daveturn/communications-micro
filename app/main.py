@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi_utils.timing import add_timing_middleware
 import logging
 
@@ -6,8 +6,9 @@ from app.middleware.LogUnsuccessfulResponse import (
     LoggingMiddleware,
 )
 
-logging.basicConfig()
-logger = logging.getLogger(__name__)
+logger = logging.Logger(__name__, level=logging.DEBUG)
+logger.setLevel(logging.DEBUG)
+
 
 # from sqlmodel import Session
 # from app.db.init_db import get_session, DatabaseName
@@ -29,7 +30,7 @@ add_timing_middleware(
 
 @app.get("/")
 async def hello():
-    return {"ERROR": 123}, 400
+    return True
 
 
 @app.get("/run")

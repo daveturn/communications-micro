@@ -3,6 +3,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 import logging
 
 logger = logging.Logger(__name__)
+logger.setLevel(logging.DEBUG)
 
 
 class AsyncIteratorWrapper:
@@ -47,7 +48,7 @@ class LoggingMiddleware(BaseHTTPMiddleware):
             ]
             # Repairing FastAPI response
             res.__setattr__("body_iterator", AsyncIteratorWrapper(res_body))
-            logger.info(
+            logger.warn(
                 f"""
 Status: {res.status_code}
 URL: {request.url}
