@@ -1,4 +1,14 @@
-from fastapi import FastAPI  # Depends
+from fastapi import FastAPI, HTTPException
+from fastapi_utils.timing import add_timing_middleware
+import logging
+
+from app.middleware.LogUnsuccessfulResponse import (
+    LoggingMiddleware,
+)
+
+logger = logging.Logger(__name__, level=logging.DEBUG)
+logger.setLevel(logging.DEBUG)
+
 
 # from sqlmodel import Session
 # from app.db.init_db import get_session, DatabaseName
@@ -6,6 +16,13 @@ from fastapi import FastAPI  # Depends
 
 
 app = FastAPI()
+app.add_middleware(LoggingMiddleware)
+
+add_timing_middleware(
+    app,
+    record=logger.info,
+    prefix="app",
+)
 
 # get_datawarehouse_session = get_session(DatabaseName.DATAWAREHOUSE)
 # get_read_only_prod_session = get_session(DatabaseName.TURN_READ_ONLY_PROD)
@@ -13,7 +30,7 @@ app = FastAPI()
 
 @app.get("/")
 async def hello():
-    return {"success": True}
+    return True
 
 
 @app.get("/run")
