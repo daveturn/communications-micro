@@ -1,10 +1,11 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi_utils.timing import add_timing_middleware
 import logging
 
 from app.middleware.LogUnsuccessfulResponse import (
     LoggingMiddleware,
 )
+from app.mailchimp.api.router import mailchimp_router
 
 logger = logging.Logger(__name__, level=logging.DEBUG)
 logger.setLevel(logging.DEBUG)
@@ -43,3 +44,6 @@ async def root(
     """
 
     pass
+
+
+app.include_router(mailchimp_router)

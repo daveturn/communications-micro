@@ -60,3 +60,5 @@ class ApiConnectorBaseClass(ABC):
 
         if status_code >= 500:
             raise ApiConnectorResponseServerErrorException()
+
+        raise ApiConnectorResponseException()

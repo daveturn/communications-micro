@@ -1,0 +1,57 @@
+interactions:
+- request:
+    body: '{"message": {"html": "<p>Hello</p>", "text": null, "subject": "test", "from_email":
+      "noreply@turn.ai", "from_name": "Turn.ai", "to": [{"email": "david@turn.ai",
+      "name": null, "type": "to"}], "headers": null, "important": false, "track_opens":
+      true, "track_clicks": true, "auto_text": true, "auto_html": true, "inline_css":
+      false, "url_strip_qs": false, "preserve_recipients": false, "view_content_link":
+      false, "bcc_address": null, "tracking_domain": null, "signing_domain": null,
+      "return_path_domain": null, "merge": true, "merge_language": null, "global_merge_vars":
+      null, "merge_vars": null, "tags": null, "subaccount": null, "google_analytics_domains":
+      null, "google_analytics_campaign": null}, "key": "RK3-2ib2BLf7auB_dEhnEA"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '731'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.27.1
+    method: POST
+    uri: https://mandrillapp.com/api/1.0/messages/send
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwzKQQrDIBBA0bvMugRJbYyueo8QZOKMYDAWdOwm9O51+fh/u4EvTBkcEH4TvaXX
+        MmGCBzRB6W2ExkWGfaIBZcKqwopPbZWedbTIUc2vw0SyZOwyxsonB/GVsX0KuNJz/u1/AAAA//8D
+        AKhbzUdpAAAA
+    headers:
+      access-control-allow-credentials:
+      - 'false'
+      access-control-allow-headers:
+      - Content-Type
+      access-control-allow-methods:
+      - POST, GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 29 Jun 2022 17:39:43 GMT
+      server:
+      - nginx/1.4.6 (Ubuntu)
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+    status:
+      code: 200
+      message: OK
+version: 1
